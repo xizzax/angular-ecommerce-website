@@ -1,11 +1,9 @@
-<div class="relative w-max ml-5 -top-11 left-80" (click)="isToggled = !isToggled">
-  <input checked="toggle" type="checkbox" id="toggleFour" class="sr-only" />
-  <div
-    class="block h-8 w-14 rounded-full"
-    [class]="isToggled ? 'border-2 border-color' : 'bg-transparent border-2 '"
-  ></div>
-  <div
-    class="cursor-pointer absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"
-    [class]="isToggled ? 'translate-x-full bg-color' : 'bg-white'"
-  ></div>
-</div>
+<input checked="toggle" type="checkbox" id="toggleFour" class="sr-only" />
+<div
+  class="block h-8 w-14 rounded-full"
+  [class]="isToggled ? 'border-2 border-color' : 'bg-transparent border-2 '"
+></div>
+<div
+  class="cursor-pointer absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"
+  [class]="isToggled ? 'translate-x-full bg-color' : 'bg-white'"
+></div>

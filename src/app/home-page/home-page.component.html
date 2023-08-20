@@ -1,16 +1,42 @@
-<div class="flex justify-center">
-  <div class="flex flex-col items-center">
-    <h1 class="text-7xl text-center text-color translate-y-8 p-2">
-      Delight Your <br />
-      Senses
-      <!-- toggle button -->
-      <app-toggle-btn
-        [isToggled]="isToggled"
+<div class="relative overflow-hidden">
+  <!-- Ice cream main -->
+  <div class="flex justify-around max-md:justify-center">
+    <div
+      class="flex flex-col items-center relative"
+      [@toggleAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
+    >
+      <h1 class="text-7xl text-center text-color translate-y-8 p-2">
+        <!-- toggle button -->
+        <app-toggle-btn
+          class="absolute top-24 translate-x-80 mt-2 ml-4"
+          [class]="screenWidth! >= 950 ? 'visible' : 'hidden'"
+          [isToggled]="buttonService.isToggled"
+          (click)="buttonService.isToggled = !buttonService.isToggled"
+        >
+        </app-toggle-btn>
+        Delight Your <br />
+        Senses
+      </h1>
+      <div class="w-full flex-justify-center">
+        <img class="w-1/2 mx-auto" src="assets/ice/1.png" alt="" />
+      </div>
+
+      <div
+        class="bottom-sheet mx-auto rounded-tr-full rounded-tl-full flex flex-col items-center"
       >
-      </app-toggle-btn>
-    </h1>
-    <div class="w-96">
-      <img class="object-cover" src="assets/ice/1.png" alt="ice cream" />
+        <h1>discover your perfect ice cream indulgence</h1>
+        <!-- Make that ice cream bars component -->
+      </div>
     </div>
+  </div>
+  <!-- Sidebar that is shown when button is clicked -->
+  <!-- its value will be fetched from data service -->
+  <div
+    class="overflow-auto scroll-handle max-h-screen sidebar absolute right-20 top-10 w-72 bg-transparent flex flex-col gap-5 transition duration-200 ease-in-out max-md:hidden"
+    [@sidebarAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
+  >
+    <app-sidebar-container></app-sidebar-container>
+    <app-sidebar-container></app-sidebar-container>
+    <app-sidebar-container></app-sidebar-container>
   </div>
 </div>
