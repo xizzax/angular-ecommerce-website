@@ -7,18 +7,22 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
 import { ToggleBtnComponent } from './home-page/toggle-btn/toggle-btn.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarContainerComponent } from './home-page/sidebar-container/sidebar-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NavbarComponent,
-    ToggleBtnComponent
+    ToggleBtnComponent,
+    SidebarContainerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
