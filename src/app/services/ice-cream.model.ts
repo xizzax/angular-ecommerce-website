@@ -1,0 +1,1 @@
+// define the interface based on the data inside the object
