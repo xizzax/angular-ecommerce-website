@@ -18,7 +18,9 @@
         Senses
       </h1>
       <div class="w-full flex-justify-center">
-        <img class="w-1/2 mx-auto" src="assets/ice/15.png" alt="" />
+        <img class="w-1/2 mx-auto" 
+        [@imageAnimation]="iceCreamService.selectedIceCream.imgurl"
+        [src]="iceCreamService.selectedIceCream.imgurl" alt="" />
       </div>
 
       <div
@@ -45,25 +47,42 @@
             >Indulgence</span
           >
         </h1>
-        
-        
-        <div class="grid grid-cols-5 gap-12 h-56 ml-8 mr-8">
+
+        <div class="grid grid-cols-5 relative gap-12 h-56 ml-8 mr-8">
           <div
+            cdkDragBoundary=".bottom-sheet"
+            class="transition z-0 absolute left-20 -top-5 duration-500 ease-out rounded-full w-20 h-20 bg-indigo-600 cursor-grab flex justify-center items-center"
+            cdkDrag
+            (cdkDragStarted)="onDragStarted()"
+            (cdkDragEnded)="onDragEnded()"
+          >
+            <img [src]="iceCreamService.selectedIceCream.iconurl"
+             class="object-cover w-full h-full rounded-full"
+             alt="">
+            <!-- <h1 class="text-white text-2xl font-semibold">Drag</h1> -->
+          </div>
+
+          <div
+            *ngFor="let item of iceCreamService.iceCreamData; let i = index"
             class="col-span-1 h-full bg-white rounded-full p-2 pb-9 mt-16 w-20"
+            
           >
             <div class="w-16 h-16 relative overflow-hidden rounded-full">
               <div
+                (mouseover)="onMouseEnter(i)"
+                (mouseout)="onMouseOut()"
+                (click)="iceCreamService.selectedIceCream = item"
                 class="absolute inset-0 transform transition-transform hover:scale-125"
-              >
+                >
                 <img
-                  src="assets/pattern/4.png"
+                  [src]="item.iconurl"
                   alt=""
                   class="w-full h-full object-contain scale-150 cursor-pointer"
                 />
               </div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="col-span-1 h-full bg-white rounded-full p-2 pb-9 mt-10 w-20"
           >
             <div class="w-16 h-16 relative overflow-hidden rounded-full">
@@ -124,10 +143,8 @@
                 />
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
-
-
       </div>
     </div>
   </div>
@@ -141,4 +158,6 @@
     <app-sidebar-container></app-sidebar-container>
     <app-sidebar-container></app-sidebar-container>
   </div>
+
+  
 </div>

@@ -46,7 +46,7 @@ export class IceCreamDataService {
       "price": 5.99,
       "quantity": 25,
       "imgurl": "assets/ice/1.png",
-      "iconurl": "assets/pattern/10.png",
+      "iconurl": "assets/pattern/12.png",
 
       "description": "Cool mint ice cream loaded with delightful chocolate chips.",
       "flavor": "Mint",

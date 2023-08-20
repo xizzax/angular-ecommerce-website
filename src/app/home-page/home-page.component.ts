@@ -1,7 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
 import { ToggleBtnService } from '../services/toggle-btn.service';
-
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+  CdkDragMove,
+} from '@angular/cdk/drag-drop';
+import { IceCreamDataService } from '../services/ice-cream-data.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -42,17 +50,26 @@ import { ToggleBtnService } from '../services/toggle-btn.service';
       ),
       transition('hidden <=> visible', animate('500ms ease-in-out')),
     ]),
-
+    trigger('imageAnimation', [
+      transition('* => *', [
+        style({ transform: 'scale(0.5)' }),
+        animate('100ms ease-in-out', style({ transform: 'scale(1)' })),
+        animate('100ms ease-in-out', style({ transform: 'translateX(-2px)' })),
+        animate('100ms ease-in-out', style({ transform: 'translateX(2px)' })),
+        animate('100ms ease-in-out', style({ transform: 'translateX(0px)' })),
+      ]),
+    ]),
 
   ],
 })
 export class HomePageComponent {
 
-
   screenWidth?: number = window.innerWidth;
 
   // injecting the service in constructor 
-  constructor(public buttonService: ToggleBtnService) { 
+  constructor(public buttonService: ToggleBtnService,
+    public iceCreamService: IceCreamDataService,
+    ) { 
     this.checkWindowSize();
   }
 
@@ -77,4 +94,40 @@ export class HomePageComponent {
     }
   }
 
+  trigger = false;
+  idxHover = -1;
+  isCircleDragged = false;
+  isDivHovered = false;
+
+  onDragStarted() {
+    this.isCircleDragged = true; // Reset the hover state
+  }
+
+  onDragEnded() {
+    // Handle drag end if needed
+    this.isCircleDragged = false;
+    // this.iceCreamService.selectedIceCream = this.iceCreamService.iceCreamData[this.idxHover];
+
+    console.log(this.idxHover);
+    // if div is being hovered then select that
+  }
+
+  onMouseEnter(idx: number) {
+    if(!this.isCircleDragged){
+      return;
+    }
+    this.idxHover = idx;
+    this.isDivHovered = true;
+    this.trigger = true;
+
+    this.iceCreamService.selectedIceCream = this.iceCreamService.iceCreamData[idx];
+    
+  }
+
+  
+
+  onMouseOut() {
+    this.isDivHovered = false;
+    this.trigger = false;
+  }
 }

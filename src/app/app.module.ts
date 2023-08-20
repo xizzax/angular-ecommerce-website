@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ToggleBtnComponent } from './home-page/toggle-btn/toggle-btn.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarContainerComponent } from './home-page/sidebar-container/sidebar-container.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SidebarContainerComponent } from './home-page/sidebar-container/sidebar
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
