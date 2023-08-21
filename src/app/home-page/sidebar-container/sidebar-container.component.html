@@ -1,14 +1,30 @@
 <!-- dynamic data remaining which should be passed to prop -->
 <div class="flex flex-col bg-box rounded-xl text-md p-2 sidebar">
-  <h1 class="text-indigo-600">{{iceCreamData?.name}}</h1>
-  <h1 class="text-sm pb-2">{{iceCreamData?.description}}</h1>
-  <div
-    class="flex  justify-center items-center mx-auto w-40 h-40 rounded-full bg-blue-300"
-  >
-    <img class="object-cover" src="{{iceCreamData?.imgurl}}" alt="" />
+  <div class="flex justify-between">
+    <h1 class="text-indigo-600">{{ iceCreamData?.name }}</h1>
+    <div class="flex items-center">
+      <img class="w-6 h-6 mr-1" src="assets/star.png" alt="" />
+
+      <h1>
+        {{ iceCreamData?.rating }}
+      </h1>
+    </div>
   </div>
-  <div class="flex justify-end pt-2 ">
-    <button class="bg-slate-300 w-max px-4 py-2 rounded-full "
-    (click)="add_to_cart(iceCreamData!)">add to cart</button>
+  <h1 class="text-sm pb-2 truncate">{{ iceCreamData?.description }}</h1>
+  <div
+    class="flex justify-center items-center mx-auto w-40 h-40 rounded-full bg-blue-300"
+  >
+    <img class="object-cover" src="{{ iceCreamData?.imgurl }}" alt="" />
+  </div>
+  <div class="flex justify-between items-baseline pt-2">
+    <div class="flex flex-col">
+      <h1>{{ iceCreamData?.price | currency }}</h1>
+    </div>
+    <button
+      class="bg-slate-300 w-max px-4 py-2 rounded-full"
+      (click)="add_to_cart(iceCreamData!)"
+    >
+      add to cart
+    </button>
   </div>
 </div>

@@ -67,6 +67,12 @@ export class IceCreamDataService {
     // will add more
   ]
 
+  flavors: string[] = ['', "Strawberry", "Mint", "Coffee"];
+  ratings: number[] = [0, 1, 2, 3, 4, 5];
+  prices: number[] = [0, 1, 2, 3, 4, 5, 6];
+
+
+
   selectedIceCream = this.iceCreamData[0];
 
 

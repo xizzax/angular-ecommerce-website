@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ToggleBtnService } from '../services/toggle-btn.service';
 import { trigger, state, style, animate, transition, } from '@angular/animations';
-
+import { Router, ActivatedRoute, NavigationEnd,  } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -25,16 +26,45 @@ import { trigger, state, style, animate, transition, } from '@angular/animations
   ]
 })
 export class NavbarComponent {
-  activeNavBarItem = 0;
+  activeNavBarItem: number = 0;
   navbarItems = [
     'Home',
-    'Our Story',
-    'About',
-    'Contact'
-  ]
-  constructor(public buttonService: ToggleBtnService) {
-  }
+    'Store',
+    'Checkout',
+    'Our-Story'
+  ];
+
+  private routerSubscription!: Subscription;
+  currentPath!: string;
+
+  constructor(
+    public buttonService: ToggleBtnService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { 
+      this.currentPath = this.router.url
+
+      this.routerSubscription = this.router.events.subscribe((event: any) => {
+        if (event instanceof NavigationEnd) {
+          this.currentPath = this.router.url
+          console.log(this.currentPath);
+          if (this.currentPath === '/') { this.activeNavBarItem = 0; }
+          if (this.currentPath === '/store') { this.activeNavBarItem = 1; }
+          if (this.currentPath === '/checkout') { this.activeNavBarItem = 2; }
+          if (this.currentPath === '/our-story') { this.activeNavBarItem = 3; }
+
+        }
+      });
+    }
+
+    ngOnDestroy() {
+      this.routerSubscription.unsubscribe();
+    }
+
   setActiveNavBarItem(index: number) {
     this.activeNavBarItem = index;
+    this.buttonService.isToggled = false;
+    // navigate to the page
+    this.router.navigate([this.navbarItems[index].toLowerCase()]);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { trigger, state, style, animate, transition, AnimationEvent } from '@angular/animations';
+import { trigger, state, style, animate, transition, AnimationEvent, query, stagger } from '@angular/animations';
 import { ToggleBtnService } from '../services/toggle-btn.service';
 import {
   CdkDragDrop,
@@ -59,7 +59,6 @@ import { IceCreamDataService } from '../services/ice-cream-data.service';
         animate('100ms ease-in-out', style({ transform: 'translateX(0px)' })),
       ]),
     ]),
-
   ],
 })
 export class HomePageComponent {
