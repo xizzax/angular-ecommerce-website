@@ -14,4 +14,9 @@ export class CartService {
     this.cart.push(iceCream);
     console.log(`${iceCream.name} added to cart`);
   };
+
+  getCart(){
+    console.log(this.cart);
+    return this.cart;
+  };
 }
