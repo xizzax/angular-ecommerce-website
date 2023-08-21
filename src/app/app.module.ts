@@ -10,6 +10,7 @@ import { ToggleBtnComponent } from './home-page/toggle-btn/toggle-btn.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarContainerComponent } from './home-page/sidebar-container/sidebar-container.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     HomePageComponent,
     NavbarComponent,
     ToggleBtnComponent,
-    SidebarContainerComponent
+    SidebarContainerComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
