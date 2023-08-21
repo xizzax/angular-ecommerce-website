@@ -154,9 +154,12 @@
     class="overflow-auto scroll-handle max-h-screen sidebar absolute right-20 top-10 w-72 bg-transparent flex flex-col gap-5 transition duration-200 ease-in-out max-md:hidden"
     [@sidebarAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
   >
-    <app-sidebar-container></app-sidebar-container>
-    <app-sidebar-container></app-sidebar-container>
-    <app-sidebar-container></app-sidebar-container>
+    <app-sidebar-container
+    *ngFor="let item of iceCreamService.iceCreamData; let i = index"
+    [iceCreamTitle]="item.name"
+    [iceCreamDescription]="item.description"
+    [iceCreamImage]="item.imgurl">
+  </app-sidebar-container>
   </div>
 
   

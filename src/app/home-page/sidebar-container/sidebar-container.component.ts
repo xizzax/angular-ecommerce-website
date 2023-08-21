@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-container',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar-container.component.css']
 })
 export class SidebarContainerComponent {
-  // will take a prop, based on which the it's html will render
+  @Input() iceCreamTitle: string = "";
+  @Input() iceCreamDescription: string = "";
+  @Input() iceCreamImage : string = "";
 }
