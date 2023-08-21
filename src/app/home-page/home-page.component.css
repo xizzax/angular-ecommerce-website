@@ -39,3 +39,17 @@
 .smol-height{
   height: 25px;
 }
+
+.curved-text span{
+  transform: rotate(180deg) translateY(100px); /* Rotate and translate the text */
+  transform-origin: bottom center;
+}
+
+
+path {
+  fill: transparent;
+}
+
+text {
+  fill: #FF9800;
+}
