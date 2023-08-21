@@ -59,6 +59,12 @@ import { IceCreamDataService } from '../services/ice-cream-data.service';
         animate('100ms ease-in-out', style({ transform: 'translateX(0px)' })),
       ]),
     ]),
+    trigger('fadeInWith', [
+      transition(':enter', [
+        style({ opacity: 0,  transform: 'translateY(-10px)' }),
+        animate('400ms ease-in-out', style({ opacity: 1, transform: 'translateY(0)'  })),
+      ]),
+    ]),
   ],
 })
 export class HomePageComponent {

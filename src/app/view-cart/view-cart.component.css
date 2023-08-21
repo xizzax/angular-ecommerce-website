@@ -1,0 +1,40 @@
+.items-container {
+  color: #4c5cbf;
+  font-family: "Inter", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+.gradient {
+  position: relative;
+  /* min-height: 200px; */
+  background-image: linear-gradient(
+    to right,
+    #8e98f8c3,
+    #f2b9fcef
+  );
+  z-index: 1;
+}
+
+.gradient::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to left,
+    #8e98f8c3,
+    #f2b9fcef
+  );
+  z-index: -1;
+  transition: opacity 2.5s linear;
+  opacity: 0;
+      border-radius: 0.75rem/* 12px */;
+
+}
+.gradient:hover::before {
+  opacity: 1;
+  border-radius: 0.75rem/* 12px */;
+
+}

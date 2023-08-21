@@ -22,6 +22,13 @@ import {
         ], { optional: true }),
       ]),
     ]),
+    trigger('fadeInWithDelay', [
+      transition(':enter', [
+        style({ opacity: 0,  transform: 'scale(0)' }),
+        animate('300ms ease-in-out', style({ opacity: 1, transform: 'scale(1)'  })),
+      ]),
+    ]),
+    
   ],
 })
 export class StorePageComponent {

@@ -30,7 +30,7 @@ export class NavbarComponent {
   navbarItems = [
     'Home',
     'Store',
-    'Checkout',
+    'Cart',
     'Our-Story'
   ];
 
@@ -50,7 +50,7 @@ export class NavbarComponent {
           console.log(this.currentPath);
           if (this.currentPath === '/') { this.activeNavBarItem = 0; }
           if (this.currentPath === '/store') { this.activeNavBarItem = 1; }
-          if (this.currentPath === '/checkout') { this.activeNavBarItem = 2; }
+          if (this.currentPath === '/cart') { this.activeNavBarItem = 2; }
           if (this.currentPath === '/our-story') { this.activeNavBarItem = 3; }
 
         }
