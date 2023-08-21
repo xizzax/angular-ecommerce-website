@@ -65,7 +65,7 @@
           <div
             *ngFor="let item of iceCreamService.iceCreamData; let i = index"
             class="col-span-1 h-full bg-white rounded-full p-2 pb-9 mt-16 w-20"
-            
+            [class]="{'mt-24':i==0||i==4,'mt-16':i==1||i==3,'mt-8':i==2}"
           >
             <div class="w-16 h-16 relative overflow-hidden rounded-full">
               <div
