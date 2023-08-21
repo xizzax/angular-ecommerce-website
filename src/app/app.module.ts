@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarContainerComponent } from './home-page/sidebar-container/sidebar-container.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ViewCartComponent } from './view-cart/view-cart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarComponent,
     ToggleBtnComponent,
     SidebarContainerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserModule,

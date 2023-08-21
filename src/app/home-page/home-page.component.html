@@ -18,9 +18,12 @@
         Senses
       </h1>
       <div class="w-full flex-justify-center">
-        <img class="w-1/2 mx-auto" 
-        [@imageAnimation]="iceCreamService.selectedIceCream.imgurl"
-        [src]="iceCreamService.selectedIceCream.imgurl" alt="" />
+        <img
+          class="w-1/2 mx-auto"
+          [@imageAnimation]="iceCreamService.selectedIceCream.imgurl"
+          [src]="iceCreamService.selectedIceCream.imgurl"
+          alt=""
+        />
       </div>
 
       <div
@@ -56,32 +59,40 @@
             (cdkDragStarted)="onDragStarted()"
             (cdkDragEnded)="onDragEnded()"
           >
-            <img [src]="iceCreamService.selectedIceCream.iconurl"
-             class="object-cover w-full h-full rounded-full"
-             alt="">
+            <img
+              [src]="iceCreamService.selectedIceCream.iconurl"
+              class="object-cover w-full h-full rounded-full"
+              alt=""
+            />
             <!-- <h1 class="text-white text-2xl font-semibold">Drag</h1> -->
           </div>
 
-          <div
-            *ngFor="let item of iceCreamService.iceCreamData; let i = index"
-            class="col-span-1 h-full bg-white rounded-full p-2 pb-9 mt-16 w-20"
-            [class]="{'mt-24':i==0||i==4,'mt-16':i==1||i==3,'mt-8':i==2}"
-          >
-            <div class="w-16 h-16 relative overflow-hidden rounded-full">
-              <div
-                (mouseover)="onMouseEnter(i)"
-                (mouseout)="onMouseOut()"
-                (click)="iceCreamService.selectedIceCream = item"
-                class="absolute inset-0 transform transition-transform hover:scale-125"
+          <div *ngFor="let item of iceCreamService.iceCreamData; let i = index">
+            <div
+              class="col-span-1 h-full bg-white rounded-full p-2 pb-9 w-20"
+              [class]="{
+                'mt-24': i == 0 || i == 4,
+                'mt-16': i == 1 || i == 3,
+                'mt-8': i == 2
+              }"
+            >
+              <div class="w-16 h-16 relative overflow-hidden rounded-full">
+                <div
+                  (mouseover)="onMouseEnter(i)"
+                  (mouseout)="onMouseOut()"
+                  (click)="iceCreamService.selectedIceCream = item"
+                  class="absolute inset-0 transform transition-transform hover:scale-125"
                 >
-                <img
-                  [src]="item.iconurl"
-                  alt=""
-                  class="w-full h-full object-contain scale-150 cursor-pointer"
-                />
+                  <img
+                    [src]="item.iconurl"
+                    alt=""
+                    class="w-full h-full object-contain scale-150 cursor-pointer"
+                  />
+                </div>
               </div>
             </div>
           </div>
+
           <!-- <div
             class="col-span-1 h-full bg-white rounded-full p-2 pb-9 mt-10 w-20"
           >
@@ -155,12 +166,9 @@
     [@sidebarAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
   >
     <app-sidebar-container
-    *ngFor="let item of iceCreamService.iceCreamData; let i = index"
-    [iceCreamTitle]="item.name"
-    [iceCreamDescription]="item.description"
-    [iceCreamImage]="item.imgurl">
-  </app-sidebar-container>
+      *ngFor="let item of iceCreamService.iceCreamData; let i = index"
+      [iceCreamData]="item"
+    >
+    </app-sidebar-container>
   </div>
-
-  
 </div>
