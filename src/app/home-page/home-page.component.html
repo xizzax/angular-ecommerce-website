@@ -69,7 +69,7 @@
             <!-- <h1 class="text-white text-2xl font-semibold">Drag</h1> -->
           </div>
 
-          <div *ngFor="let item of iceCreamService.iceCreamData; let i = index">
+          <div *ngFor="let item of iceCreamService.getPatternIceCreams(); let i = index">
             <div
               class="col-span-1 h-full bg-white rounded-full p-2 pb-9 w-20"
               [class]="{
@@ -170,6 +170,7 @@
     <app-sidebar-container
       *ngFor="let item of iceCreamService.iceCreamData; let i = index"
       [iceCreamData]="item"
+      
     >
     </app-sidebar-container>
   </div>

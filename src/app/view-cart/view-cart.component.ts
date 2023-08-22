@@ -7,23 +7,30 @@ import { trigger, state, style, animate, transition, query, stagger, animateChil
   styleUrls: ['./view-cart.component.css'],
   animations: [
 
-    trigger('listAnimation', [
+    trigger('itemsAnimation', [
 			transition('* => *', [
-				query('@fadeInWith', [
+				query('@fadeIn', [
 					stagger(200, [
 						animateChild()
 					]),
 				], { optional: true })
 			]),
 		]),
-
-    trigger('fadeInWith', [
+    
+    trigger('fadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(-10px)' }),
-        animate('400ms ease-in-out', style({ opacity: 1, transform: 'translateY(0)' })),
+        style({
+          transform: 'translate3d(-10px,-10px,0)',
+          opacity: 0
+        }),
+        animate('0.25s', style({
+          transform: 'translate3d(0,0,0)',
+          opacity: 1
+        }))
       ]),
     ]),
-    trigger('slideInfromLeft', [
+
+    trigger('slideInfromRight', [
       transition(':enter', [
         style({
           transform: 'translate3d(20px, 0px,0)',

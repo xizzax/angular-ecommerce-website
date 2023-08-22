@@ -1,13 +1,13 @@
 <div class="grid grid-cols-10 min-h-screen items-container">
   <div class="col-span-6 max-md:col-span-10 mx-3">
-    <div class="flex flex-col" [@listAnimation]>
+    <div class="flex flex-col" [@itemsAnimation]>
       <h1 class="text-4xl my-3">Cart Items</h1>
 
       <div
         class="gradient flex justify-around items-center hover:text-white rounded-xl mb-5 py-2 transition duration-300 ease-out"
         (mouseenter)="toggleHover()"
         (mouseleave)="toggleHover()"
-        [@fadeInWith]
+        [@fadeIn]
       >
         <!-- every component should have its toggle (add that when making a seperate component
         of this)-->
@@ -47,7 +47,7 @@
         class="gradient flex justify-around items-center hover:text-white rounded-xl mb-5 py-2 transition duration-300 ease-out"
         (mouseenter)="toggleHover()"
         (mouseleave)="toggleHover()"
-        [@fadeInWith]
+        [@fadeIn]
       >
         <!-- every component should have its toggle (add that when making a seperate component
       of this)-->
@@ -95,7 +95,7 @@
   </div>
 
   <!-- <div class="relative w-full h-screen gradient">heihrfwiehrw</div> -->
-  <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromLeft]>
+  <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromRight]>
     <img
       class="object-cover lg:h-full max-lg:h-5/6"
       src="assets/ice/1.png"

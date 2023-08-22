@@ -22,7 +22,7 @@ import {
         ], { optional: true }),
       ]),
     ]),
-    trigger('fadeInWithDelay', [
+    trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0,  transform: 'scale(0)' }),
         animate('300ms ease-in-out', style({ opacity: 1, transform: 'scale(1)'  })),
@@ -36,6 +36,7 @@ export class StorePageComponent {
   flavorFilter = '';
   ratingFilter = 0;
   pricingFilter = 0;
+  replayAnimation = 0;
 
   constructor(public iceCreamService: IceCreamDataService,
   ) { }
@@ -48,7 +49,6 @@ export class StorePageComponent {
 
 
   resetFilters() {
-
   }
 
   

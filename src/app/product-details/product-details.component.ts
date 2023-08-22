@@ -28,7 +28,7 @@ import { trigger, state, style, animate, transition, query, stagger, animateChil
 		trigger('slideIn', [
 			transition(':enter', [
 				style({
-					transform: 'translate3d(0,-10px,0)',
+					transform: 'translate3d(-10px,-10px,0)',
 					opacity: 0
 				}),
 				animate('0.1s', style({
