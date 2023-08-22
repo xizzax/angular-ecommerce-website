@@ -1,19 +1,15 @@
 <div class="grid grid-cols-10 min-h-screen items-container">
-  <div class="col-span-7">
-    <div class="flex flex-col "
-    [@fadeInWith]
-
-    >
-
-      <h1 class="text-4xl mx-10 my-3">Cart Items</h1>
+  <div class="col-span-6 max-md:col-span-10 mx-3">
+    <div class="flex flex-col" [@listAnimation]>
+      <h1 class="text-4xl my-3">Cart Items</h1>
 
       <div
-        class="gradient flex justify-around items-center hover:text-white rounded-xl
-         mb-5 mx-10 py-2 transition duration-300 ease-out"
-         (mouseenter)="toggleHover()"
-         (mouseleave)="toggleHover()"
+        class="gradient flex justify-around items-center hover:text-white rounded-xl mb-5 py-2 transition duration-300 ease-out"
+        (mouseenter)="toggleHover()"
+        (mouseleave)="toggleHover()"
+        [@fadeInWith]
       >
-      <!-- every component should have its toggle (add that when making a seperate component
+        <!-- every component should have its toggle (add that when making a seperate component
         of this)-->
         <img
           class="w-16 h-16 object-cover bg-indigo-200 rounded-full"
@@ -23,17 +19,16 @@
         <h1>hellowwwww</h1>
         <div class="flex items-center gap-1">
           <button
-            class="w-6 h-6 border-2  bg-transparent rounded-full text-sm text-white"
+            class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
             [class]="!isHovered ? 'border-indigo-500' : 'border-white'"
-            >
+          >
             -
           </button>
           <h1>68</h1>
           <button
             class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
             [class]="!isHovered ? 'border-indigo-500' : 'border-white'"
-
-            >
+          >
             +
           </button>
         </div>
@@ -43,25 +38,68 @@
         <div class="w-8 h-8 cursor-pointer">
           <img
             class="object-cover text-white"
-            [src]="!isHovered? 'assets/close.svg': 'assets/closewhite.svg'"
+            [src]="!isHovered ? 'assets/close.svg' : 'assets/closewhite.svg'"
             alt=""
           />
         </div>
       </div>
+      <div
+        class="gradient flex justify-around items-center hover:text-white rounded-xl mb-5 py-2 transition duration-300 ease-out"
+        (mouseenter)="toggleHover()"
+        (mouseleave)="toggleHover()"
+        [@fadeInWith]
+      >
+        <!-- every component should have its toggle (add that when making a seperate component
+      of this)-->
+        <img
+          class="w-16 h-16 object-cover bg-indigo-200 rounded-full"
+          src="assets/ice/1.png"
+          alt=""
+        />
+        <h1>hellowwwww</h1>
+        <div class="flex items-center gap-1">
+          <button
+            class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
+            [class]="!isHovered ? 'border-indigo-500' : 'border-white'"
+          >
+            -
+          </button>
+          <h1>68</h1>
+          <button
+            class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
+            [class]="!isHovered ? 'border-indigo-500' : 'border-white'"
+          >
+            +
+          </button>
+        </div>
 
+        <h1>{{ 10 | currency }}</h1>
+
+        <div class="w-8 h-8 cursor-pointer">
+          <img
+            class="object-cover text-white"
+            [src]="!isHovered ? 'assets/close.svg' : 'assets/closewhite.svg'"
+            alt=""
+          />
+        </div>
+      </div>
       <div class="flex justify-end mx-10">
         <h1 class="rounded-2xl glass w-max px-2 py-2">Total: Alot</h1>
       </div>
       <button
-      class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 w-2/6 mx-auto"
-    >
-      CheckOut
-    </button>
+        class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 w-2/6 mx-auto"
+      >
+        CheckOut
+      </button>
     </div>
   </div>
 
   <!-- <div class="relative w-full h-screen gradient">heihrfwiehrw</div> -->
-  <div class="col-span-3">
-    <img class="object-cover h-full" src="assets/ice/1.png" alt="" />
+  <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromLeft]>
+    <img
+      class="object-cover lg:h-full max-lg:h-5/6"
+      src="assets/ice/1.png"
+      alt=""
+    />
   </div>
 </div>

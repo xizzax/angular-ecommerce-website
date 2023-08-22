@@ -1,5 +1,8 @@
 <!-- dynamic data remaining which should be passed to prop -->
-<div class="flex flex-col bg-box rounded-xl text-md p-2 sidebar">
+<a
+  class="flex flex-col bg-box rounded-xl text-md p-2 sidebar cursor-pointer"
+  (click) = "navigateToProductDetails(iceCreamData!)"
+  >
   <div class="flex justify-between">
     <h1 class="text-indigo-600">{{ iceCreamData?.name }}</h1>
     <div class="flex items-center">
@@ -21,10 +24,10 @@
       <h1>{{ iceCreamData?.price | currency }}</h1>
     </div>
     <button
-      class="bg-slate-300 w-max px-4 py-2 rounded-full"
-      (click)="add_to_cart(iceCreamData!)"
-    >
+      class="add-to-cart-button bg-slate-300 w-max px-4 py-2 rounded-full"
+      (click)="add_to_cart($event, iceCreamData!)"
+      >
       add to cart
     </button>
   </div>
-</div>
+</a>

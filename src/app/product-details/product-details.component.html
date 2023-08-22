@@ -1,0 +1,47 @@
+<div class="grid grid-cols-10 height p-5" [@leftAnimation] [@listAnimation]>
+  <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromLeft]>
+    <img
+      class="object-cover lg:h-full max-lg:h-5/6"
+      src="assets/ice/1.png"
+      alt=""
+    />
+  </div>
+
+  <div class="col-span-6 max-md:col-span-10" [@slideIn]>
+    <div class="flex flex-col gap-2 justify-center h-full" [@listAnimation]>
+      <div class="flex items-baseline gap-5" [@slideIn]>
+        <h1 class="text-5xl bold">Name</h1>
+        <h1 class="text-4xl">{{ 10 | currency }}</h1>
+      </div>
+      <h2 class="text-3xl" [@slideIn]>
+        description haha baaten xd im bored lmao seepy eepy
+      </h2>
+      <h2 class="text-3xl" [@slideIn]>
+        Category: <span class="bold">Midas Touch</span>
+      </h2>
+      <h2 class="text-2xl" [@slideIn]>
+        ingredients used to cook:
+        <span class="bold" [@slideIn]>[milk, sugar, water, ice]</span>
+      </h2>
+      <div class="flex gap-1 text-lg" [@slideIn]>
+        <button
+          class="w-6 h-6 border-2 bg-transparent rounded-full text-sm border-white text-white"
+        >
+          -
+        </button>
+        <h1>68</h1>
+        <button
+          class="w-6 h-6 border-2 bg-transparent rounded-full text-sm border-white text-white"
+        >
+          +
+        </button>
+      </div>
+      <button
+        class="add-to-cart-button bg-slate-300 w-max px-4 py-2 rounded-full"
+        [@slideIn]
+      >
+        add to cart
+      </button>
+    </div>
+  </div>
+</div>

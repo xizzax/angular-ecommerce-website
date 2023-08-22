@@ -1,0 +1,15 @@
+div {
+  color: #4c5cbf;
+  font-family: "Inter", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+
+}
+
+.bold {
+  font-weight: 700;
+
+}
+.height{
+  min-height: 80vh;
+}

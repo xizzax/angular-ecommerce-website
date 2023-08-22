@@ -13,6 +13,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ViewCartComponent } from './view-cart/view-cart.component';
 import { StorePageComponent } from './store-page/store-page.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { StorePageComponent } from './store-page/store-page.component';
     NotFoundComponent,
     ViewCartComponent,
     StorePageComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
