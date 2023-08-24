@@ -63,8 +63,7 @@ export class IceCreamDataService {
       "flavor": "Coffee",
       "allergens": ["Milk"],
       "rating": 4.7
-    },
-    // will add more
+    }
   ]
 
   flavors: string[] = ['', "Strawberry", "Mint", "Coffee"];
@@ -83,7 +82,8 @@ export class IceCreamDataService {
   filter() { }
 
   getPatternIceCreams(){
-    return this.iceCreamData.filter(iceCream => iceCream.iconurl != null);
+    this.iceCreamData = this.iceCreamData.filter(iceCream => iceCream.iconurl != null);
+    return this.iceCreamData
   }
 
 }

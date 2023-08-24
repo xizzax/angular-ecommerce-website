@@ -7,7 +7,7 @@
 .gradient {
   position: relative;
   /* min-height: 200px; */
-  background-image: linear-gradient(to right, #8e98f8c3, #f2b9fcef);
+  background-image: linear-gradient(to right, #8e98f8c3, #edd8f1ef);
   z-index: 1;
 }
 
@@ -18,7 +18,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(to left, #8e98f8c3, #f2b9fcef);
+  background-image: linear-gradient(to left, #8e98f8c3, #edd8f1ef);
   z-index: -1;
   transition: opacity 1s linear;
   opacity: 0;

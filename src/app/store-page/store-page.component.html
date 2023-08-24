@@ -46,13 +46,17 @@
 
 <!-- Items Area -->
 <div
-  [@staggerAnimation]
   class="grid grid-cols-12 gap-5 p-2"
+  [@staggerAnimation]
+
 >
   <div
     class="col-span-4 max-md:col-span-6 max-sm:col-span-12"
-    *ngFor="let item of this.iceCreams; let i = index"
+    *ngFor="let item of this.iceCreams; let i = index;"
+    [@fadeIn]="replayAnimation"
+
   >
-    <app-sidebar-container [iceCreamData]="item"></app-sidebar-container>
+    <app-sidebar-container 
+    [iceCreamData]="item"></app-sidebar-container>
   </div>
 </div>
