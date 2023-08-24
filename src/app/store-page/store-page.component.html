@@ -7,7 +7,8 @@
   <!-- flavor filter -->
   <select 
   [(ngModel)]="flavorFilter"
-  class="select border-2 border-white bg-transparent w-28 ">
+  class="select border-2 border-white bg-transparent w-28 "
+ >
     <option
       *ngFor="let flavor of iceCreamService.flavors"
       [value]="flavor"
@@ -50,7 +51,7 @@
 >
   <div
     class="col-span-4 max-md:col-span-6 max-sm:col-span-12"
-    *ngFor="let item of iceCreamService.iceCreamData; let i = index"
+    *ngFor="let item of this.iceCreams; let i = index"
   >
     <app-sidebar-container [iceCreamData]="item"></app-sidebar-container>
   </div>
