@@ -1,0 +1,33 @@
+<div class="grid grid-cols-10 min-h-screen items-container">
+  <div class="col-span-6 max-md:col-span-10 mx-3">
+    <div class="flex flex-col" [@itemsAnimation]>
+      <h1 class="text-4xl my-3">Cart Items</h1>
+
+      <app-cart-item *ngFor="let item of this.currentCart" [item]="item"
+      (add_to_cart)="add_to_cart($event)"
+      (subtract_from_cart)="subtract_from_cart($event)"
+      (remove_from_cart)="remove_from_cart($event)"
+      >
+      </app-cart-item>
+      <div class="flex justify-end max-sm:justify-center mb-5">
+        <h1 class="rounded-2xl glass w-max px-2 py-2">
+          Total: {{ this.total.toFixed(2) | currency }}
+        </h1>
+      </div>
+      <button
+        class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 w-2/6 mx-auto"
+      >
+        CheckOut
+      </button>
+    </div>
+  </div>
+
+  <!-- <div class="relative w-full h-screen gradient">heihrfwiehrw</div> -->
+  <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromRight]>
+    <img
+      class="object-cover lg:h-full max-lg:h-5/6"
+      src="assets/ice/1.png"
+      alt=""
+    />
+  </div>
+</div>

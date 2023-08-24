@@ -9,8 +9,8 @@ import {
   stagger,
   animateChild,
 } from '@angular/animations';
-import { CartService } from '../services/cart.service';
-import { CartObject } from '../services/cart.model';
+import { CartService } from '../../services/cart.service';
+import { CartObject } from '../../services/cart.model';
 
 @Component({
   selector: 'app-view-cart',
@@ -63,31 +63,36 @@ export class ViewCartComponent {
   total: number = 0;
   constructor(private service: CartService) {
     this.currentCart = service.getCart();
-    this.total = service.getTotal();
   }
 
+  ngOnInit() {
+    console.log('on init is called')
+    console.log(this.service.getTotal())
+    this.total = this.service.getTotal();
+
+  }
   toggleHover() {
     this.isHovered = !this.isHovered;
   }
 
-  add_to_cart(event: Event, iceCreamData: CartObject) {
-    event.stopPropagation(); // Prevent event from propagating
+  add_to_cart(iceCreamData: CartObject) {
+    console.log('Parent function is called from the child');
+
     this.service.addToCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
   }
 
-  subtract_from_cart(event: Event, iceCreamData: CartObject) {
-    event.stopPropagation(); // Prevent event from propagating
+  subtract_from_cart(iceCreamData: CartObject) {
     this.service.subtractFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
   }
 
-  remove_from_cart(event: Event, iceCreamData: CartObject) {
-    event.stopPropagation(); // Prevent event from propagating
+  remove_from_cart(iceCreamData: CartObject) {
     this.service.removeFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
   }
+
 }

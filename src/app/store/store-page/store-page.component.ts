@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IceCreamDataService } from '../services/ice-cream-data.service';
+import { IceCreamDataService } from '../../services/ice-cream-data.service';
 import {
   trigger,
   transition,
@@ -10,7 +10,7 @@ import {
   animateChild,
   state,
 } from '@angular/animations';
-import { IceCream } from '../services/ice-cream.model';
+import { IceCream } from '../../services/ice-cream.model';
 
 @Component({
   selector: 'app-store-page',
@@ -97,7 +97,7 @@ export class StorePageComponent {
 
     }
 
-    this.iceCreams = [...filteredIceCreamList]
+    this.iceCreams = filteredIceCreamList
     this.replayAnimation++;
     this.triggerAnimation = true;
     console.log(this.iceCreams);

@@ -11,6 +11,7 @@ export class CartService {
   constructor() {
     if(localStorage.getItem("cart") != null){
       this.cart = JSON.parse(localStorage.getItem("cart")!);
+      this.calculateTotal()
     }
   }
 

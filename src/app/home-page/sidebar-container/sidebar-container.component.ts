@@ -27,7 +27,7 @@ export class SidebarContainerComponent {
       queryParams,
       state: { iceCreamData }
     };
-    this.router.navigate(['/product-details'], navigationExtras);
+    this.router.navigate(['store/product-details'], navigationExtras);
   }
 
   add_to_cart(event: Event, iceCreamData:IceCream){
