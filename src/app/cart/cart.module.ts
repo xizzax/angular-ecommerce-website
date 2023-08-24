@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
-import { CartItemComponent } from './cart-item/cart-item.component';
-import { ViewCartComponent } from './view-cart/view-cart.component';
+import { CartItemComponent } from '../view-cart/cart-item/cart-item.component';
+import { ViewCartComponent } from '../view-cart/view-cart.component';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
   imports: [
     CommonModule,
     CartRoutingModule,
-    
+
   ]
 })
 export class CartModule { }

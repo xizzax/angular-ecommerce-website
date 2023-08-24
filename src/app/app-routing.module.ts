@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
 
   // { path: 'cart', component: ViewCartComponent },
-  { path: 'product-details', component: ProductDetailsComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
