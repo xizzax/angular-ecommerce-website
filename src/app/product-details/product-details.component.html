@@ -8,18 +8,18 @@
   </div>
 
   <div class="col-span-6 max-md:col-span-10" [@slideIn]>
-    <div class="flex flex-col gap-2 justify-center h-full" [@listAnimation]>
+    <div class="flex flex-col gap-2 justify-center max-md:items-center h-full" [@listAnimation]>
       <div class="flex items-baseline gap-5" [@slideIn]>
-        <h1 class="text-5xl bold">{{ iceCreamData.name }}</h1>
-        <h1 class="text-4xl">{{ iceCreamData.price | currency }}</h1>
+        <h1 class="text-5xl max-sm:text-xl bold">{{ iceCreamData.name }}</h1>
+        <h1 class="text-4xl max-sm:text-xl">{{ iceCreamData.price | currency }}</h1>
       </div>
-      <h2 class="text-3xl" [@slideIn]>
+      <h2 class="text-3xl max-sm:text-lg" [@slideIn]>
         {{ iceCreamData.description }}
       </h2>
-      <h2 class="text-3xl" [@slideIn]>
+      <h2 class="text-3xl max-sm:text-lg" [@slideIn]>
         Flavor: <span class="bold">{{ iceCreamData.flavor }} </span>
       </h2>
-      <h2 class="text-2xl" [@slideIn]>
+      <h2 class="text-2xl max-sm:text-lg" [@slideIn]>
         Allergens:
         <span class="bold" [@slideIn]>{{ iceCreamData.allergens }}</span>
       </h2>

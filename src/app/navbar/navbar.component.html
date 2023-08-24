@@ -1,8 +1,10 @@
-<div class="flex flex-wrap justify-between items-baseline">
+<div class="flex flex-wrap md:justify-between items-baseline 
+max-md:flex-col max-md:justify-center max-md:items-center">
   <h1 class="text-4xl flex-1 font-mono font-bold text-white">Ice Cream</h1>
 
   <div
-    class="flex gap-1 text-indigo-600 text-sm font-medium bg-white rounded-full w-max h-max px-1 py-1"
+    class="flex gap-1 text-indigo-600 max-sm:text-xs text-sm font-medium bg-white 
+    rounded-full w-max h-max px-1 py-1 "
     [@toggleAnimation]= "buttonService.isToggled ? 'visible' : 'hidden'"
     >
     <!-- Dynamic Navbar -->
@@ -21,5 +23,5 @@
   </div>
   <h1 
 
-  class="text-4xl flex-1 font-mono font-bold text-end text-white">yolo</h1>
+  class="text-4xl flex-1 font-mono font-bold text-end text-white max-md:hidden">yolo</h1>
 </div>
