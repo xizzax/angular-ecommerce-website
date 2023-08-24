@@ -1,12 +1,13 @@
-<div class="flex flex-wrap md:justify-between items-baseline 
-max-md:flex-col max-md:justify-center max-md:items-center">
-  <h1 class="text-4xl flex-1 font-mono font-bold text-white">Ice Cream</h1>
+<div
+  class="flex flex-wrap md:justify-between items-baseline max-md:flex-col max-md:justify-center max-md:items-center"
+>
+  <!-- <h1 class="text-4xl flex-1 font-mono font-bold text-white">Ice Cream</h1> -->
+  <h1 class="flex-1"></h1>
 
   <div
-    class="flex gap-1 text-indigo-600 max-sm:text-xs text-sm font-medium bg-white 
-    rounded-full w-max h-max px-1 py-1 "
-    [@toggleAnimation]= "buttonService.isToggled ? 'visible' : 'hidden'"
-    >
+    class="flex gap-1 text-indigo-600 max-sm:text-xs text-sm font-medium bg-white rounded-full w-max h-max px-1 py-1"
+    [@toggleAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
+  >
     <!-- Dynamic Navbar -->
     <h1
       *ngFor="let item of navbarItems; let i = index"
@@ -21,7 +22,15 @@ max-md:flex-col max-md:justify-center max-md:items-center">
       {{ item }}
     </h1>
   </div>
-  <h1 
-
-  class="text-4xl flex-1 font-mono font-bold text-end text-white max-md:hidden">yolo</h1>
+  <!-- <div class="w-16 h-16"> -->
+  <!-- </div> -->
+  <h1
+    class="text-4xl flex-1 font-mono font-bold text-end text-white max-md:hidden"
+  >
+    <img
+      class="w-10 h-10 object-cover relative right-1"
+      src="assets/star.png"
+      alt=""
+    />
+  </h1>
 </div>

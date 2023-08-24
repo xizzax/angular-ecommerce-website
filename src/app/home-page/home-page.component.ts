@@ -10,6 +10,7 @@ import {
   CdkDragMove,
 } from '@angular/cdk/drag-drop';
 import { IceCreamDataService } from '../services/ice-cream-data.service';
+import { IceCream } from '../services/ice-cream.model';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -70,7 +71,7 @@ import { IceCreamDataService } from '../services/ice-cream-data.service';
 export class HomePageComponent {
 
   screenWidth?: number = window.innerWidth;
-
+  patternIceCreams: IceCream[] = [];
   // injecting the service in constructor 
   constructor(public buttonService: ToggleBtnService,
     public iceCreamService: IceCreamDataService,
@@ -78,25 +79,61 @@ export class HomePageComponent {
     this.checkWindowSize();
   }
 
+  ngOnInit(){
+    this.patternIceCreams = this.iceCreamService.getPatternIceCreams();
+  }
+
+
   @HostListener('window:resize', ['$event']) // event listener for window resize
   onResize(event: any) {
     this.checkWindowSize();
   }
 
   checkWindowSize() {
-    // create a variable which stores window's current width and in frontend 
-    // we can use this variable to show/hide elements
-    if (window.innerWidth <= 950) { // Adjust the breakpoint as needed
+    this.patternIceCreams = this.iceCreamService.getPatternIceCreams();
+    if (window.innerWidth <= 950) { 
 
-      // now updating that service and where ever this buttonService.isToggled
-      // is used the toggle will take its effect
       this.buttonService.isToggled = false;
 
       this.screenWidth = window.innerWidth;
+  
     } else if (window.innerWidth > 950) {
       this.screenWidth = window.innerWidth;
       // this.isToggled = true;
     }
+    if(window.innerWidth <= 950){
+      this.patternIceCreams = this.patternIceCreams.slice(0, 4);
+    }
+    if(window.innerWidth <= 650){
+      this.patternIceCreams = this.patternIceCreams.slice(0, 3);
+    }
+    if(window.innerWidth <= 450){
+      this.patternIceCreams = this.patternIceCreams.slice(0, 2);
+    }
+  }
+  getClasses(i: number){
+    if(window.innerWidth>950){
+      return {
+        'mt-24': i == 0 || i == 4,
+        'mt-16': i == 1 || i == 3,
+        'mt-8': i == 2
+      }
+    }else if(window.innerWidth<=950 && window.innerWidth>650){
+      return {
+        'mt-24': i == 0 || i == 3,
+        'mt-16': i == 1 || i == 2,
+      }
+    }else if(window.innerWidth<=650 && window.innerWidth>450){
+      return {
+        'mt-24': i == 0 || i == 2,
+        'mt-16': i == 1,
+      }
+    }else if(window.innerWidth<=450){
+      return {
+        'mt-24': i == 0 || i == 1,
+      }
+    }
+    return 'mt-16'
   }
 
   trigger = false;
