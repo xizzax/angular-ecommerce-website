@@ -76,9 +76,10 @@ export class ProductDetailsComponent {
 
       this.iceCreamData = history.state.iceCreamData;
 
-      //find quantity of ice cream in cart
       if (
-        this.service.cart.find((item) => item.iceCream.name === this.iceCreamData.name)
+        this.service.cart.find(
+          (item) => item.iceCream.name === this.iceCreamData.name
+        )
       ) {
         this.quantity = this.service.cart.find(
           (item) => item.iceCream.name === this.iceCreamData.name
@@ -89,9 +90,28 @@ export class ProductDetailsComponent {
 
   add_to_cart(event: Event) {
     this.service.addToCart(this.iceCreamData);
+    if (
+      this.service.cart.find(
+        (item) => item.iceCream.name === this.iceCreamData.name
+      )
+    ) {
+      this.quantity = this.service.cart.find(
+        (item) => item.iceCream.name === this.iceCreamData.name
+      )!.quantity;
+    }
   }
 
   subtract_from_cart(event: Event) {
     this.service.subtractFromCart(this.iceCreamData);
+
+    if (
+      this.service.cart.find(
+        (item) => item.iceCream.name === this.iceCreamData.name
+      )
+    ) {
+      this.quantity = this.service.cart.find(
+        (item) => item.iceCream.name === this.iceCreamData.name
+      )!.quantity;
+    }
   }
 }

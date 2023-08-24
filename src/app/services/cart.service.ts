@@ -5,10 +5,14 @@ import { CartObject } from './cart.model';
   providedIn: 'root',
 })
 export class CartService {
-  cart: CartObject[] = [];
+  cart: CartObject[]= [];
   total: number = 0;
 
-  constructor() {}
+  constructor() {
+    if(localStorage.getItem("cart") != null){
+      this.cart = JSON.parse(localStorage.getItem("cart")!);
+    }
+  }
 
   addToCart(iceCream: IceCream) {
     if (this.cart.find((item) => item.iceCream['name'] === iceCream.name)) {
@@ -19,6 +23,8 @@ export class CartService {
       this.cart.push({ iceCream: iceCream, quantity: 1 });
     }
     this.calculateTotal();
+
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   getCart() {
@@ -52,12 +58,16 @@ export class CartService {
       );
     }
     this.calculateTotal();
+
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   removeFromCart(iceCream: IceCream) {
     this.cart = this.cart.filter(
       (item) => item.iceCream['name'] !== iceCream.name
     );
-    this.calculateTotal();
+    this.calculateTotal();  
+
+    localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 }
