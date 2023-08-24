@@ -14,10 +14,10 @@
         of this)-->
         <img
           class="w-16 h-16 object-cover bg-indigo-200 rounded-full"
-          src="{{item['imgUrl']}}"
+          src="{{item.iceCream.imgurl}}"
           alt=""
         />
-        <h1>{{item['name']}}</h1>
+        <h1>{{item.iceCream.name}}</h1>
         <div class="flex items-center gap-1">
           <button
             class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
@@ -26,7 +26,7 @@
           >
             -
           </button>
-          <h1>{{item['quantity']}}</h1>
+          <h1>{{item.quantity}}</h1>
           <button
             class="w-6 h-6 border-2 bg-transparent rounded-full text-sm text-white"
             [class]="!isHovered ? 'border-indigo-500' : 'border-white'"
@@ -36,7 +36,7 @@
           </button>
         </div>
 
-        <h1>{{ item['price'] | currency }}</h1>
+        <h1>{{ item.iceCream.price| currency }}</h1>
 
         <div class="w-8 h-8 cursor-pointer">
           <img

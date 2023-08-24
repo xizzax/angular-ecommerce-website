@@ -53,7 +53,7 @@ export class ViewCartComponent {
   total:number  = 0;
   constructor(private service:CartService){
     this.currentCart = service.getCart();
-    this.total = this.currentCart.reduce((acc,curr) => acc + curr.price*curr.quantity,0);
+    this.total = service.getTotal();
   }
 
   toggleHover() {
@@ -62,23 +62,21 @@ export class ViewCartComponent {
 
   add_to_cart(event: Event, iceCreamData:CartObject){
     event.stopPropagation(); // Prevent event from propagating
-    this.currentCart.find((item) => item.name === iceCreamData.name)!.quantity++;
-    this.total = this.currentCart.reduce((acc,curr) => acc + curr.price*curr.quantity,0);
+    this.service.addToCart(iceCreamData.iceCream);
+    this.total = this.service.getTotal();
   }
 
   subtract_from_cart(event: Event, iceCreamData:CartObject){
     event.stopPropagation(); // Prevent event from propagating
-    this.currentCart.find((item) => item.name === iceCreamData.name)!.quantity--;
-    //if quantity is 0, remove from cart
-    if(this.currentCart.find((item) => item.name === iceCreamData.name)!.quantity === 0){
-      this.currentCart = this.currentCart.filter((item) => item.name !== iceCreamData.name);
-    }
-    this.total = this.currentCart.reduce((acc,curr) => acc + curr.price*curr.quantity,0);
+    this.service.subtractFromCart(iceCreamData.iceCream);
+    this.total = this.service.getTotal();
+
   }
 
   remove_from_cart(event: Event, iceCreamData:CartObject){
     event.stopPropagation(); // Prevent event from propagating
-    this.currentCart = this.currentCart.filter((item) => item.name !== iceCreamData.name);
-    this.total = this.currentCart.reduce((acc,curr) => acc + curr.price*curr.quantity,0);
+    this.service.removeFromCart(iceCreamData.iceCream);
+    this.total = this.service.getTotal();
+
   }
 }

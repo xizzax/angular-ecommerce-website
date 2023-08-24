@@ -1,6 +1,7 @@
+import { IceCream } from "./ice-cream.model";
+
 export type CartObject = {
-    name: string,
-    price: number,
-    quantity: number
-    imgUrl: string,
+    iceCream: IceCream,
+    quantity: number,
   };
+

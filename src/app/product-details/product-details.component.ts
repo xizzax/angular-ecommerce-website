@@ -78,10 +78,10 @@ export class ProductDetailsComponent {
 
       //find quantity of ice cream in cart
       if (
-        this.service.cart.find((item) => item.name === this.iceCreamData.name)
+        this.service.cart.find((item) => item.iceCream.name === this.iceCreamData.name)
       ) {
         this.quantity = this.service.cart.find(
-          (item) => item.name === this.iceCreamData.name
+          (item) => item.iceCream.name === this.iceCreamData.name
         )!.quantity;
       }
     });
@@ -89,23 +89,9 @@ export class ProductDetailsComponent {
 
   add_to_cart(event: Event) {
     this.service.addToCart(this.iceCreamData);
-    //update quantity
-    this.quantity = this.service.cart.find(
-      (item) => item.name === this.iceCreamData.name
-    )!.quantity;
   }
 
   subtract_from_cart(event: Event) {
-    this.service.cart.find((item) => item.name === this.iceCreamData.name)!
-      .quantity--;
-    //if quantity is 0, remove from cart
-    if (
-      this.service.cart.find((item) => item.name === this.iceCreamData.name)!
-        .quantity === 0
-    ) {
-      this.service.cart = this.service.cart.filter(
-        (item) => item.name !== this.iceCreamData.name
-      );
-    }
+    this.service.subtractFromCart(this.iceCreamData);
   }
 }
