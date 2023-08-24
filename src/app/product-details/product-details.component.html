@@ -1,8 +1,8 @@
 <div class="grid grid-cols-10 height p-5" [@leftAnimation] [@listAnimation]>
   <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromLeft]>
     <img
-      class="object-cover lg:h-full max-lg:h-5/6"
-      src="assets/ice/1.png"
+      class="object-cover lg:h-full max-lg:h-5/6 pr-3"
+      src="{{iceCreamData.imgurl}}"
       alt=""
     />
   </div>
@@ -10,18 +10,19 @@
   <div class="col-span-6 max-md:col-span-10" [@slideIn]>
     <div class="flex flex-col gap-2 justify-center h-full" [@listAnimation]>
       <div class="flex items-baseline gap-5" [@slideIn]>
-        <h1 class="text-5xl bold">Name</h1>
-        <h1 class="text-4xl">{{ 10 | currency }}</h1>
+        <h1 class="text-5xl bold">{{iceCreamData.name}}</h1>
+        <h1 class="text-4xl">{{ iceCreamData.price | currency }}</h1>
       </div>
       <h2 class="text-3xl" [@slideIn]>
-        description haha baaten xd im bored lmao seepy eepy
+        {{iceCreamData.description}}
       </h2>
       <h2 class="text-3xl" [@slideIn]>
-        Category: <span class="bold">Midas Touch</span>
+        Flavor: <span class="bold">{{iceCreamData.flavor}}
+        </span>
       </h2>
       <h2 class="text-2xl" [@slideIn]>
-        ingredients used to cook:
-        <span class="bold" [@slideIn]>[milk, sugar, water, ice]</span>
+        Allergens:
+        <span class="bold" [@slideIn]>{{iceCreamData.allergens}}</span>
       </h2>
       <div class="flex gap-1 text-lg" [@slideIn]>
         <button

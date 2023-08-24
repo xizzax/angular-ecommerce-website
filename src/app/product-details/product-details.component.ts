@@ -52,6 +52,8 @@ import { trigger, state, style, animate, transition, query, stagger, animateChil
 	]
 })
 export class ProductDetailsComponent {
+
+	iceCreamData: any = null;
 	constructor(private route: ActivatedRoute,) {
 
 	}
@@ -64,10 +66,12 @@ export class ProductDetailsComponent {
 
 			console.log(history.state) // to get navigation data
 
+			this.iceCreamData = history.state.iceCreamData;
+
 		});
 	}
 
 
-
+	
 
 }
