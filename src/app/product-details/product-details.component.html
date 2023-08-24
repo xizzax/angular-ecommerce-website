@@ -2,7 +2,7 @@
   <div class="col-span-4 max-md:col-span-10 h-full mx-auto" [@slideInfromLeft]>
     <img
       class="object-cover lg:h-full max-lg:h-5/6 pr-3"
-      src="{{iceCreamData.imgurl}}"
+      src="{{ iceCreamData.imgurl }}"
       alt=""
     />
   </div>
@@ -10,29 +10,30 @@
   <div class="col-span-6 max-md:col-span-10" [@slideIn]>
     <div class="flex flex-col gap-2 justify-center h-full" [@listAnimation]>
       <div class="flex items-baseline gap-5" [@slideIn]>
-        <h1 class="text-5xl bold">{{iceCreamData.name}}</h1>
+        <h1 class="text-5xl bold">{{ iceCreamData.name }}</h1>
         <h1 class="text-4xl">{{ iceCreamData.price | currency }}</h1>
       </div>
       <h2 class="text-3xl" [@slideIn]>
-        {{iceCreamData.description}}
+        {{ iceCreamData.description }}
       </h2>
       <h2 class="text-3xl" [@slideIn]>
-        Flavor: <span class="bold">{{iceCreamData.flavor}}
-        </span>
+        Flavor: <span class="bold">{{ iceCreamData.flavor }} </span>
       </h2>
       <h2 class="text-2xl" [@slideIn]>
         Allergens:
-        <span class="bold" [@slideIn]>{{iceCreamData.allergens}}</span>
+        <span class="bold" [@slideIn]>{{ iceCreamData.allergens }}</span>
       </h2>
       <div class="flex gap-1 text-lg" [@slideIn]>
         <button
           class="w-6 h-6 border-2 bg-transparent rounded-full text-sm border-white text-white"
+          (click)="subtract_from_cart($event)"
         >
           -
         </button>
-        <h1>68</h1>
+        <h1>{{ this.quantity }}</h1>
         <button
           class="w-6 h-6 border-2 bg-transparent rounded-full text-sm border-white text-white"
+          (click)="add_to_cart($event)"
         >
           +
         </button>
@@ -40,6 +41,7 @@
       <button
         class="add-to-cart-button bg-slate-300 w-max px-4 py-2 rounded-full"
         [@slideIn]
+        (click)="add_to_cart($event)"
       >
         add to cart
       </button>

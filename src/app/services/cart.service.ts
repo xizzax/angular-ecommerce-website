@@ -28,4 +28,6 @@ export class CartService {
     console.log(this.cart);
     return this.cart;
   }
+
+  
 }
