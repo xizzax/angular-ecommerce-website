@@ -7,9 +7,12 @@ app.use(express.static("public"));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.use(cors({ origin: true, credentials: true }));
+require('dotenv').config();
+
+// console.log("API Key:", process.env.api_key);
 
 const stripe = require("stripe")(
-  "sk_test_51NizL3HRBepfNKBjvbzDyeeGOiizGpgxdxgajeiQ5Le9gD5k7oXmYY5PbuqE4RMFWRdEN9W3fyCY2KMyyh8HSYxy0022z7hHpj"
+  `${process.env.api_key}`
 );
 
 app.post("/checkout", async (req, res, next) => {
@@ -75,8 +78,8 @@ app.post("/checkout", async (req, res, next) => {
         quantity: item.quantity,
       })),
       mode: "payment",
-      success_url: "http://localhost:4200/",
-      cancel_url: "http://localhost:4200/not-found",
+      success_url: "http://localhost:4200/success",
+      cancel_url: "http://localhost:4200/fail",
     });
 
     res.status(200).json(session);

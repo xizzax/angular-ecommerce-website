@@ -17,7 +17,8 @@
       <button
       (click)="onCheckout()"
         class="btn btn-primary border-none bg-indigo-500 hover:bg-indigo-600 w-2/6 mx-auto"
-      >
+        [disabled]="currentCart.length === 0"
+        >
         CheckOut
       </button>
     </div>

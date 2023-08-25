@@ -11,6 +11,7 @@ import {
   animateChild,
 } from '@angular/animations';
 import { CartService } from '../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-details',
@@ -64,9 +65,11 @@ import { CartService } from '../services/cart.service';
 export class ProductDetailsComponent {
   iceCreamData: any = null;
   quantity: number = 0;
-  constructor(private route: ActivatedRoute, private service: CartService) {}
+  constructor(private route: ActivatedRoute, private service: CartService,
+    private toastr: ToastrService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0)
     this.route.queryParams.subscribe((params) => {
       const name = params['name'];
 
@@ -99,6 +102,7 @@ export class ProductDetailsComponent {
         (item) => item.iceCream.name === this.iceCreamData.name
       )!.quantity;
     }
+    this.toastr.success('Added to cart', );
   }
 
   subtract_from_cart(event: Event) {
@@ -113,5 +117,7 @@ export class ProductDetailsComponent {
         (item) => item.iceCream.name === this.iceCreamData.name
       )!.quantity;
     }
+    this.toastr.error('Removed from cart');
+
   }
 }

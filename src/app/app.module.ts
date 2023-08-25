@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { SuccessPageComponent } from './success-page/success-page.component';
+import { FailPageComponent } from './fail-page/fail-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     ToggleBtnComponent,
     NotFoundComponent,
-    
+    SuccessPageComponent,
+    FailPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     DragDropModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      progressBar: true,
+      progressAnimation: 'increasing',
+
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

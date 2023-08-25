@@ -13,6 +13,7 @@ import { CartService } from '../../services/cart.service';
 import { CartObject } from '../../services/cart.model';
 import { HttpClient } from '@angular/common/http';
 import { loadStripe } from '@stripe/stripe-js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-cart',
@@ -63,7 +64,8 @@ export class ViewCartComponent {
 
   currentCart: CartObject[] = [];
   total: number = 0;
-  constructor(private service: CartService, private http: HttpClient) {
+  constructor(private service: CartService, private http: HttpClient,
+    private toastr: ToastrService) {
     this.currentCart = service.getCart();
   }
 
@@ -78,42 +80,47 @@ export class ViewCartComponent {
   }
 
   add_to_cart(iceCreamData: CartObject) {
-    console.log('Parent function is called from the child');
-
     this.service.addToCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
+    this.toastr.success('Quantity increased');
   }
 
   subtract_from_cart(iceCreamData: CartObject) {
     this.service.subtractFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
+    this.toastr.error('Quantity decreased');
+
   }
 
   remove_from_cart(iceCreamData: CartObject) {
     this.service.removeFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
+    this.toastr.error(`${iceCreamData.iceCream.name} removed from cart`);
   }
 
-  clearCart(){
+  clearCart() {
 
   }
 
   onCheckout(): void {
 
-    this.http
-      .post('http://localhost:4242/checkout', {
-        items: this.currentCart,
-      })
-      .subscribe(async (res: any) => {
+    this.http.post('http://localhost:4242/checkout', {
+      items: this.currentCart,
+    }).subscribe(
+      async (res: any) => {
         console.log(res);
         let stripe = await loadStripe('pk_test_51NizL3HRBepfNKBjiXJ2aD0Dqc5njzjFDrLLFrso06bZX54gZi9EJ7BM7D3qhdFgZ8gNTQB48lLmX6KLCg1yRqpl002EXtrYe1');
         stripe?.redirectToCheckout({
           sessionId: res.id,
         });
-      });
+      },
+      (error: any) => {
+        // console.log('HTTP Error:', error.error);
+        this.toastr.error('HTTP Error in checkout');
+      }
+    );
   }
-
 }

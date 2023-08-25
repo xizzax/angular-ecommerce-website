@@ -9,11 +9,10 @@ import {
   animateChild,
   state,
 } from '@angular/animations';
-
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.css'],
+  selector: 'app-success-page',
+  templateUrl: './success-page.component.html',
+  styleUrls: ['./success-page.component.css'],
   animations:[
     trigger('staggerAnimation', [
       transition(':enter', [
@@ -24,19 +23,15 @@ import {
     ]),
     trigger('fadeIn', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0) translateY(-100px)' }),
+        style({ opacity: 0, transform: 'scale(0) translateX(300px)' }),
         animate(
           '300ms ease-in-out',
-          style({ opacity: 0.5, transform: 'scale(1) translateY(100px)' })
-        ),
-        animate(
-          '300ms ease-in-out',
-          style({ opacity: 1, transform: 'scale(1) translateY(0px)' })
+          style({ opacity: 1, transform: 'scale(1) translateX(0px)' })
         ),
       ]),
     ]),
   ]
 })
-export class NotFoundComponent {
+export class SuccessPageComponent {
 
 }
