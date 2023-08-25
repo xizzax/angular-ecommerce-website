@@ -11,6 +11,8 @@ import {
 } from '@angular/animations';
 import { CartService } from '../services/cart.service';
 import { CartObject } from '../services/cart.model';
+import { HttpClient } from '@angular/common/http';
+import { loadStripe } from '@stripe/stripe-js';
 
 @Component({
   selector: 'app-view-cart',
@@ -61,7 +63,7 @@ export class ViewCartComponent {
 
   currentCart: CartObject[] = [];
   total: number = 0;
-  constructor(private service: CartService) {
+  constructor(private service: CartService, private http: HttpClient) {
     this.currentCart = service.getCart();
   }
 
@@ -93,6 +95,25 @@ export class ViewCartComponent {
     this.service.removeFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
+  }
+
+  clearCart(){
+
+  }
+
+  onCheckout(): void {
+
+    this.http
+      .post('http://localhost:4242/checkout', {
+        items: this.currentCart,
+      })
+      .subscribe(async (res: any) => {
+        console.log(res);
+        let stripe = await loadStripe('pk_test_51NizL3HRBepfNKBjiXJ2aD0Dqc5njzjFDrLLFrso06bZX54gZi9EJ7BM7D3qhdFgZ8gNTQB48lLmX6KLCg1yRqpl002EXtrYe1');
+        stripe?.redirectToCheckout({
+          sessionId: res.id,
+        });
+      });
   }
 
 }
