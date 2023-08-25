@@ -9,8 +9,8 @@ import {
   stagger,
   animateChild,
 } from '@angular/animations';
-import { CartService } from '../services/cart.service';
-import { CartObject } from '../services/cart.model';
+import { CartService } from '../../services/cart.service';
+import { CartObject } from '../../services/cart.model';
 
 @Component({
   selector: 'app-view-cart',
