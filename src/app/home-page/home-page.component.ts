@@ -1,14 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { trigger, state, style, animate, transition, AnimationEvent, query, stagger } from '@angular/animations';
 import { ToggleBtnService } from '../services/toggle-btn.service';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-  CdkDrag,
-  CdkDropList,
-  CdkDragMove,
-} from '@angular/cdk/drag-drop';
 import { IceCreamDataService } from '../services/ice-cream-data.service';
 import { IceCream } from '../services/ice-cream.model';
 @Component({
@@ -68,21 +60,27 @@ import { IceCream } from '../services/ice-cream.model';
     ]),
   ],
 })
-export class HomePageComponent {
+export class HomePageComponent   {
 
   screenWidth?: number = window.innerWidth;
   patternIceCreams: IceCream[] = [];
   // injecting the service in constructor 
   constructor(public buttonService: ToggleBtnService,
     public iceCreamService: IceCreamDataService,
+    private cdRef: ChangeDetectorRef   
+
     ) { 
-    this.checkWindowSize();
   }
 
   ngOnInit(){
     this.patternIceCreams = this.iceCreamService.getPatternIceCreams();
   }
 
+  ngAfterViewInit(){
+    this.checkWindowSize();
+    this.cdRef.detectChanges(); 
+
+  }
 
   @HostListener('window:resize', ['$event']) // event listener for window resize
   onResize(event: any) {
@@ -107,7 +105,7 @@ export class HomePageComponent {
     if(window.innerWidth <= 650){
       this.patternIceCreams = this.patternIceCreams.slice(0, 3);
     }
-    if(window.innerWidth <= 450){
+    if(window.innerWidth <= 500){
       this.patternIceCreams = this.patternIceCreams.slice(0, 2);
     }
   }
@@ -123,12 +121,12 @@ export class HomePageComponent {
         'mt-24': i == 0 || i == 3,
         'mt-16': i == 1 || i == 2,
       }
-    }else if(window.innerWidth<=650 && window.innerWidth>450){
+    }else if(window.innerWidth<=650 && window.innerWidth>500){
       return {
         'mt-24': i == 0 || i == 2,
         'mt-16': i == 1,
       }
-    }else if(window.innerWidth<=450){
+    }else if(window.innerWidth<=500){
       return {
         'mt-24': i == 0 || i == 1,
       }

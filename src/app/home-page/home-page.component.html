@@ -7,7 +7,7 @@
       class="flex flex-col items-center relative"
       [@toggleAnimation]="buttonService.isToggled ? 'visible' : 'hidden'"
     >
-      <h1 class="text-7xl text-center text-color translate-y-8 p-2">
+      <h1 class="text-7xl max-md:text-4xl text-center text-color translate-y-8 p-2">
         <!-- toggle button -->
         <app-toggle-btn
           class="absolute top-24 translate-x-80 mt-2 ml-4"
@@ -19,9 +19,9 @@
         Delight Your <br />
         Senses
       </h1>
-      <div class="w-full flex-justify-center">
+      <div class="w-full max-sm:h-64 flex-justify-center">
         <img
-          class="w-1/2 mx-auto"
+          class="sm:w-1/2 w-full h-full object-cover  mx-auto"
           [@imageAnimation]="iceCreamService.selectedIceCream.imgurl"
           [src]="iceCreamService.selectedIceCream.imgurl"
           alt=""
