@@ -122,7 +122,7 @@ export class ViewCartComponent {
         });
       },
       (error: any) => {
-        // console.log('HTTP Error:', error.error);
+         console.log('HTTP Error:', error.error);
         this.toastr.error('HTTP Error in checkout');
       }
     );
