@@ -64,16 +64,18 @@ export class HomePageComponent   {
 
   screenWidth?: number = window.innerWidth;
   patternIceCreams: IceCream[] = [];
+  trigger = false;
+  idxHover = -1;
+  isCircleDragged = false;
+  isDivHovered = false;
   // injecting the service in constructor 
   constructor(public buttonService: ToggleBtnService,
     public iceCreamService: IceCreamDataService,
-    private cdRef: ChangeDetectorRef   
-
-    ) { 
+    private cdRef: ChangeDetectorRef) { 
   }
 
   ngOnInit(){
-    this.patternIceCreams = this.iceCreamService.getPatternIceCreams();
+    // this.patternIceCreams = this.iceCreamService.getPatternIceCreams();
   }
 
   ngAfterViewInit(){
@@ -99,13 +101,13 @@ export class HomePageComponent   {
       this.screenWidth = window.innerWidth;
       // this.isToggled = true;
     }
-    if(window.innerWidth <= 950){
+    if(window.innerWidth < 950 && window.innerWidth > 650){
       this.patternIceCreams = this.patternIceCreams.slice(0, 4);
     }
-    if(window.innerWidth <= 650){
+    else if(window.innerWidth <= 650 && window.innerWidth > 500){
       this.patternIceCreams = this.patternIceCreams.slice(0, 3);
     }
-    if(window.innerWidth <= 500){
+    else if(window.innerWidth <= 500){
       this.patternIceCreams = this.patternIceCreams.slice(0, 2);
     }
   }
@@ -134,10 +136,7 @@ export class HomePageComponent   {
     return 'mt-16'
   }
 
-  trigger = false;
-  idxHover = -1;
-  isCircleDragged = false;
-  isDivHovered = false;
+  
 
   onDragStarted() {
     this.isCircleDragged = true; // Reset the hover state

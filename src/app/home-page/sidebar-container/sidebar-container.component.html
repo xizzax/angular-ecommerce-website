@@ -1,10 +1,12 @@
 <!-- dynamic data remaining which should be passed to prop -->
 <a
-  class="flex flex-col bg-box rounded-xl text-md p-2 sidebar cursor-pointer"
+  class="flex flex-col bg-box rounded-xl text-md p-2 
+   cursor-pointer 
+   "
   (click) = "navigateToProductDetails(iceCreamData!)"
   >
   <div class="flex justify-between">
-    <h1 class="text-indigo-600">{{ iceCreamData?.name }}</h1>
+    <h1 class="text-indigo-600 truncate">{{ iceCreamData?.name }}</h1>
     <div class="flex items-center">
       <img class="w-6 h-6 mr-1" src="assets/star.png" alt="" />
 

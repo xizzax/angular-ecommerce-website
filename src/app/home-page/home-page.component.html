@@ -19,7 +19,7 @@
         Delight Your <br />
         Senses
       </h1>
-      <div class="w-full max-sm:h-64 flex-justify-center">
+      <div class="w-full max-sm:h-64 flex-justify-center mt-3 mb-2">
         <img
           class="sm:w-1/2 w-full h-full object-cover  mx-auto"
           [@imageAnimation]="iceCreamService.selectedIceCream.imgurl"
@@ -32,15 +32,16 @@
         class="bottom-sheet mx-auto rounded-tr-full pr-5 pl-5 rounded-tl-full flex flex-col items-center"
       >
         <h1
-          class="text-2xl text-center font-extralight text-color pt-8 pb-3 pr-3 pl-3"
+          class="text-2xl text-center font-extralight
+           text-color pt-8 pb-3 pr-3 pl-3 max-sm:flex max-sm:flex-col"
         >
           Discover Your
           <span
-            class="bottom-sheet-higlighted-text bg-indigo-600 pl-2 pr-2 rounded-full"
+            class="bottom-sheet-higlighted-text bg-indigo-600 pl-2 pr-2 rounded-full max-md:mb-1"
           >
             Perfect
           </span>
-          <br />
+          <br class="max-md:hidden"/>
           <span
             class="bottom-sheet-higlighted-text bg-indigo-600 pl-2 pr-2 rounded-full"
           >
