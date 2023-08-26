@@ -98,10 +98,14 @@ export class ViewCartComponent {
     this.service.removeFromCart(iceCreamData.iceCream);
     this.total = this.service.getTotal();
     this.currentCart = this.service.getCart();
-    this.toastr.error(`${iceCreamData.iceCream.name} removed from cart`);
+    this.toastr.success(`${iceCreamData.iceCream.name} removed from cart`);
   }
 
   clearCart() {
+    this.service.clearCart();
+    this.total = this.service.getTotal();
+    this.currentCart = this.service.getCart();
+    this.toastr.error('Cart cleared');
 
   }
 
