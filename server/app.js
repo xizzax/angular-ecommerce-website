@@ -13,6 +13,10 @@ var checkoutRouter = require('./routes/checkout');
 
 // console.log(`api_key: ${process.env.api_key}`);
 
+app.use('/', (req, res, next) => {
+    console.log("Request received at: " + Date.now());
+    next();
+});
 app.use('/', checkoutRouter);
 
 app.listen(4242, () => console.log("app is running on 4242"));
