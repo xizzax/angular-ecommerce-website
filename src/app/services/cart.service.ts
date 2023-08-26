@@ -71,4 +71,11 @@ export class CartService {
 
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
+
+  clearCart(){
+    this.cart = [];
+    this.calculateTotal();
+
+    localStorage.setItem("cart", JSON.stringify(this.cart));
+  }
 }

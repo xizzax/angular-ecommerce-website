@@ -11,9 +11,6 @@ import { ToggleBtnService } from 'src/app/services/toggle-btn.service';
   styleUrls: ['./sidebar-container.component.css']
 })
 export class SidebarContainerComponent {
-  // @Input() iceCreamTitle: string = "";
-  // @Input() iceCreamDescription: string = "";
-  // @Input() iceCreamImage : string = "";
 
   @Input() iceCreamData: IceCream | null = null;
 

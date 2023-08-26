@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   trigger,
   state,
@@ -12,6 +12,7 @@ import {
 } from '@angular/animations';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { IceCreamDataService } from '../services/ice-cream-data.service';
 
 @Component({
   selector: 'app-product-details',
@@ -65,17 +66,33 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductDetailsComponent {
   iceCreamData: any = null;
   quantity: number = 0;
-  constructor(private route: ActivatedRoute, private service: CartService,
-    private toastr: ToastrService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: CartService,
+    private toastr: ToastrService,
+    private iceCreamService: IceCreamDataService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     this.route.queryParams.subscribe((params) => {
       const name = params['name'];
 
       console.log(name);
 
       console.log(history.state); // to get navigation data
+
+      //applying check to see if the name is in ice cream data
+      const originalString = name.replace(/-/g, ' ');
+      console.log(originalString);
+      var found = this.iceCreamService.iceCreamData.find(
+        (item) => item.name === originalString
+      );
+      if (!found) {
+        //navigating to 404
+        this.router.navigate(['404']);
+      }
 
       this.iceCreamData = history.state.iceCreamData;
 
@@ -102,7 +119,7 @@ export class ProductDetailsComponent {
         (item) => item.iceCream.name === this.iceCreamData.name
       )!.quantity;
     }
-    this.toastr.success('Added to cart', );
+    this.toastr.success('Added to cart');
   }
 
   subtract_from_cart(event: Event) {
@@ -118,6 +135,5 @@ export class ProductDetailsComponent {
       )!.quantity;
     }
     this.toastr.error('Removed from cart');
-
   }
 }

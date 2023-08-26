@@ -21,6 +21,13 @@
         >
         CheckOut
       </button>
+      <button
+      (click)="clearCart()"
+        class="btn mt-2 btn-primary border-none bg-indigo-500 hover:bg-indigo-600 w-2/6 mx-auto"
+        [disabled]="currentCart.length === 0"
+        >
+        Clear Cart
+      </button>
     </div>
   </div>
 
